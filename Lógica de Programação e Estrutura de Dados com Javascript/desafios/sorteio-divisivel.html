@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+
+<body>
+    <h1>Mostrar números de 0 a 100 ignorando múltiplos de 10, a cada interação sortear número de 1 a 100.
+        Se o número mostrado for divisível pelo número sorteado, interrompa o loop.
+    </h1>
+
+    <script>
+        let nsort = 0
+
+        for (let i = 0; i <= 100; i++) {
+            
+            if ((i % 10 == 0)) {
+                continue
+            }
+
+            nsort = parseInt(Math.random() * 100 + 1)
+
+            document.write(i + " | " + nsort + "<br>")
+
+            if (i % nsort == 0) {
+                break
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -8,7 +8,9 @@
 </head>
 
 <body>
-    <h1>Jogar dois dados até que a soma dos pontos seja par por 10 vezes e contar quantas vezes foram jogados</h1>
+    <h1>Jogar dois dados até que a soma dos pontos seja par por 10 vezes e contar quantas vezes foram jogados (sem
+        contar as vezes em que os números foram iguais)
+    </h1>
 
     <script>
         let dado1 = 0
@@ -20,18 +22,24 @@
             dado1 = parseInt(Math.random() * 6 + 1)
             dado2 = parseInt(Math.random() * 6 + 1)
 
-            document.write(dado1 + " | " + dado2 + "<br>")
+            document.write(dado1 + " | " + dado2 + "------------------ " + cont + " | " + contpar + "<br>")
 
-            if((dado1+dado2) % 2 == 0){
+            if (dado1 == dado2) {
+                document.write("^^^")
+                document.write("soma par, porém iguais <br>")
+                continue
+            }
+
+            cont++
+
+            if ((dado1 + dado2) % 2 == 0) {
                 document.write("^^^^")
                 document.write("SOMA PAR <br>")
                 contpar++
             }
-
-            cont++
         } while (contpar < 10)
 
-        document.write("<br> Os dados foram jogados " + cont++ + " vezes.")
+        document.write("<br> Os dados foram jogados " + cont + " vezes.")
     </script>
 </body>
 
