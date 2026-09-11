@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos Tipos</title>
+</head>
+<body>
+    <h1>Tipos de Valores - Boolean, Number e String</h1>
+
+    <script>
+        alert("Exemplos no Código e Console")
+
+        let msg = "Olá, eu sou uma \"mensagem de texto\"!" // a \ manda o js ignorar o valor do caractere
+        console.log(msg)
+
+        //tipos de 0
+        console.log(typeof 0) //number
+        console.log(typeof "0") //string
+        console.log(typeof String(0)) //string
+
+        //tipos de valores
+        console.log(typeof undefined) //undefined
+        console.log(typeof null) //object (mas é errado, pois null é a falta de um objeto ou valor)
+        console.log(typeof 0) //number
+        console.log(typeof "") //string
+        console.log(typeof true) //boolean
+
+        let isValid = true
+        console.log(typeof isValid) //boolean
+
+        //valores nulos
+        let naoDeclarado = null
+        console.log(naoDeclarado) //null
+        naoDeclarado = 
+        console.log(naoDeclarado) //null
+
+        //NaN
+        let n = parseFloat("a")
+        console.log(typeof n) //number
+        console.log(n) //NaN (Not a Number)
+
+        //valores convertidos em boolean
+        console.log()
+        console.log(Boolean("0")) //true
+        console.log(Boolean(0)) //false
+        console.log(Boolean(undefined)) //false
+        console.log(Boolean(null)) //false
+        console.log(Boolean("")) //false
+        console.log(Boolean(NaN)) //false
+
+        //comparação e negação
+        console.log(5 == 5) //true
+        console.log(5 == 3) //false
+        console.log(5 == '5') //true
+        console.log(5 === '5') //false (valor é igual mas tipo é diferente)
+        console.log(5 != 5) //false
+        console.log(5 != 3) //true
+        console.log(5 != '5') //false
+        console.log(5 !== '5') //true
+
+        isValid = true
+        console.log(!isValid) //false
+
+        let x = 1
+        //incremento/decremento pré-fixado - soma/subtrai 1 do x ANTES de retornar x
+        console.log(x) //1
+        console.log(++x) //2
+        console.log(++x) //3
+        console.log(--x) //2
+
+        x = 1
+        //incremento/decremento pós-fixado - soma/subtrai 1 do x DEPOIS de retornar x
+        console.log(x) //1
+        console.log(x++) //1
+        console.log(x) //2
+        console.log(x++) //2
+        console.log(x) //3
+        console.log(x--) //3
+        console.log(x) //2
+
+        //conversão número para String
+        n = 2
+        console.log(n.toString()) //'2'
+        console.log(10.5.toString()) //'10.5'
+        //console.log(10.toString()) //dá erro pq ele acha que o . era pra continuar como decimal
+        console.log(10 .toString()) // '10'
+    </script>
+</body>
+</html>

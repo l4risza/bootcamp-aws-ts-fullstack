@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <h1>Calcular média e aprovar somente se a média for maior que 4 e nenhuma nota for 0</h1>
+
+    <script>
+        let n1 = parseFloat(prompt("Digite a nota 1:"))
+        let n2 = parseFloat(prompt("Digite a nota 2:"))
+
+        let media = (n1 + n2) /2
+
+        if(media > 4 && n1 > 0 && n2 > 0){
+            alert("APROVADO!")
+            alert("Média maior que 4 e notas acima de 0")
+        }else if(media <= 4){
+            alert("REPROVADO!")
+            alert("Média menor ou igual a 4")
+        }
+        else if(!(n1 > 0 && n2 > 0)){
+            alert("REPROVADO!")
+            alert("Média maior que 4, porém há nota(s) 0")
+        }
+    </script>
+</body>
+</html>
