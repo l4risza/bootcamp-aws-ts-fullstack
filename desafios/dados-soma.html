@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 6</title>
+</head>
+
+<body>
+    <h1>Jogar dois dados até que a soma dos pontos seja par por 10 vezes e contar quantas vezes foram jogados</h1>
+
+    <script>
+        let dado1 = 0
+        let dado2 = 0
+        let cont = 0
+        let contpar = 0
+
+        do {
+            dado1 = parseInt(Math.random() * 6 + 1)
+            dado2 = parseInt(Math.random() * 6 + 1)
+
+            document.write(dado1 + " | " + dado2 + "<br>")
+
+            if((dado1+dado2) % 2 == 0){
+                document.write("^^^^")
+                document.write("SOMA PAR <br>")
+                contpar++
+            }
+
+            cont++
+        } while (contpar < 10)
+
+        document.write("<br> Os dados foram jogados " + cont++ + " vezes.")
+    </script>
+</body>
+
+</html>
