@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 17</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Criar uma classe Contador que inicialmente tenha um valor zero. A classe deve ter um método incrementar() para
+        aumentar o contador em um e um método valorAtual() para retornar o valor atual do contador.
+        No entando, o acesso direto ao valor do contador deve ser proibido (privado), garantindo que o contador só possa
+        ser modificado através dos métodos definidos.
+    </h1>
+
+    <script>
+        class Contador {
+            #contador
+
+            constructor(valor) {
+                this.#contador = 0
+            }
+
+            incrementar() {
+                this.#contador++
+            }
+
+            valorAtual() {
+                console.log(`Valor atual do contador: ${this.#contador}`)
+            }
+        }
+
+        const n = new Contador()
+        console.log(n)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 12</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ARRAYS COM OBJETOS COM ARRAYS: Dado um array de objetos Alunos com nome e lista de notas(array), mostre uma lista com 
+        nomes e sublistas com notas</h1>
+
+    <br>
+    <h2>Informações de Alunos</h2>
+
+    <ul id="listaAlunos">
+    </ul>
+
+
+    <script>
+        const Alunos = [
+            { nome: "Zuza", notas: [5, 6, 7] },
+            { nome: "Yasmin", notas: [8, 2, 4] },
+            { nome: "Xuxa", notas: [3, 6, 8] }
+        ]
+
+        const listaAlunos = document.getElementById("listaAlunos")
+
+        //Variável que vai recebendo os comandos, e depois só executa innerHTML uma vez, transformando String em HTML
+        //Fazer isso torna possível criar listas em listas, pq innerHTML fecha tags automaticamente
+        let alunosHTML = ""
+
+        for(let i = 0; i < Alunos.length; i++){
+            alunosHTML += "<li>" + Alunos[i].nome
+                alunosHTML += "<ul>"
+                    for(let j = 0; j < Alunos[i].notas.length; j++){
+                        alunosHTML += "<li>" + Alunos[i].notas[j] + "</li>"
+                    }
+                alunosHTML += "</ul>"
+            alunosHTML += "</li>" 
+        }
+
+        listaAlunos.innerHTML = alunosHTML
+
+    </script>
+</body>
+
+</html>

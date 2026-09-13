@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 11</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+        table, th, td{
+            border: 1px solid black;
+        }
+        th,td{
+            padding:5px;
+        }
+        th + th, td + td{
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        ARRAYS COM OBJETOS: Dado um array contendo 4 objetos com nome e email, mostrar em uma lista (tag de lista html) cada nome 
+        com seus respectivos emails</h1>
+
+    <ul id="listaPessoas"></ul>
+
+    <script>
+        const Pessoas = [
+            {nome: 'Abner', email: 'abner@email.com'},
+            {nome: 'Bruna', email: 'Bruna@email.com'},
+            {nome: 'Cecilia', email: 'Cecilia@email.com'},
+            {nome: 'Daniel', email: 'Daniel@email.com'}
+        ]
+
+        const listaPessoas = document.getElementById("listaPessoas")
+
+        for(let i = 0; i <= Pessoas.length; i++){
+            listaPessoas.innerHTML += "<li> " + Pessoas[i].nome + ": " + Pessoas[i].email + "</li>"
+        }
+    </script>
+
+    <hr>
+    <h1>Dado um array contendo objetos Produtos, mostrar tabela html com atributos de cada Produto</h1>
+    <br>
+
+    <h2>Tabela Produtos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+            </tr>
+        </thead>
+        
+        <tbody id="tabelaProdutos">
+        </tbody>
+    </table>
+
+    <script>
+        const Produtos = [
+            {nome: 'caneta', preco: 2, estoque: 3},
+            {nome: 'lapis', preco: 1.5, estoque: 6},
+            {nome: 'caderno', preco: 10, estoque: 2},
+            {nome: 'borracha', preco: 4, estoque: 4},
+            {nome: 'apontador', preco: 6, estoque: 7},
+        ]
+
+        const tabelaProdutos = document.getElementById("tabelaProdutos")
+
+        for(let i = 0; i < Produtos.length; i++){
+            tabelaProdutos.innerHTML += `<tr>
+                <td>${Produtos[i].nome}</td>
+                <td>${Produtos[i].preco.toFixed(2)}</td>
+                <td>${Produtos[i].estoque}</td>
+            </tr>`
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 8</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dado um array contendo os dias da semana, mostre em um alert qual é o dia atual</h1>
+
+    <script>
+        const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
+
+        for(let i = 0; i <= dias.length; i++){
+            if(i == new Date().getDay()){
+                alert(`Hoje é ${dias[new Date().getDay()]}`)
+            }
+        }
+    </script>
+</body>
+
+</html>

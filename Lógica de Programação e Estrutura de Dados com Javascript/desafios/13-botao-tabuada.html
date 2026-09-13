@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 13</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Em uma tela contendo um input e um botão, permitir que o usuário digite um número e ao clicar no botão mostrar
+        tabuada
+        de 1 a 100 do número digitado
+    </h1>
+
+    <br>
+    <h2>Tabuada</h2>
+
+    <input type="number" id="num">
+    <button onclick="mostrarTabuada()">Mostrar Tabuada</button>
+    <button onclick="limparTabuada()">Limpar Tabuada</button>
+    <div id="output"></div>
+
+    <script>
+        const input = document.getElementById("num")
+        const output = document.getElementById("output")
+
+        let tabuadaHTML = ""
+
+
+        function mostrarTabuada() {
+            const inputValue = input.value      //.value pro input recuperar o valor digitado e não o html todo
+
+            limparTabuada()
+
+            for (let i = 1; i <= 100; i++) {
+                tabuadaHTML += `${inputValue} X ${i}= ${i*inputValue} <br>`
+            }
+
+            output.innerHTML = tabuadaHTML
+        }
+
+        function limparTabuada() {
+            tabuadaHTML = ""
+            output.innerHTML = ""
+        }
+
+        mostrarTabuada()
+    </script>
+</body>
+
+</html>

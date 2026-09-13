@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Este é um Título</h1>
+    <p id="paragrafo">Este é um <b>parágrafo</b>. Em <i>itálico</i> é este parágrafo.</p>
+    <br>
+    <h4>O que acha?</h4>
+    <input type="text" id="formulario" value="incrivel">
+
+    <!--
+    CONSOLE - Valores
+
+    document
+        > <!DOCTYPE html>...
+
+    document.getElementById("titulo")
+        > <h1 id="titulo">Título</h1>
+
+    let titulo1 = document.getElementById("titulo")
+    titulo1
+        > <h1 id="titulo">Título</h1>
+
+    titulo1.textContent
+        > 'Este é um Título'
+
+    titulo1.textContent = "Título Alterado"
+        > 'Título Alterado'         //e muda na página do browser
+
+    let form = document.getElementById("formulario")
+    form
+        > <input type=​"text" id=​"formulario" value=​"incrivel">​
+
+    form.value
+        > 'incrivel'
+    
+    form.value = "maravilhoso"
+        > 'maravilhoso'         //e muda na página do browser  
+    
+    -->
+
+
+    <!--
+    DICA
+    Se colocar o <script> externo no head, usar defer, assim o script é lido APÓS todo o documento, mesmo estando no começo
+        <script defer src="arquivo.js"></script>
+    -->
+
+
+    <!--
+    CONSOLE - textContent VS innerHTML
+
+    let p = document.getElementById("paragrafo")
+    p
+        > <p id=​"paragrafo">​…​</p>​
+
+    p.textContent
+        > 'Este é um parágrafo. Em itálico é este parágrafo.'   //não mostra tag <i>
+
+    p.textContent = "novo <b>texto</b>"
+        > 'novo <b>texto</b>'       //não funciona, escreve a tag dentro do texto e na página
+
+    p.innerHTML = "novo <b>texto</b>"
+        > 'novo <b>texto</b>'       //funciona, fica em negrito normalmente na página   
+
+    p.innerHTML
+        > 'novo <b>texto</b>'
+
+    -->
+
+
+    <hr>
+    <h2>Lista de Tarefas</h2>
+    <ol id="lista">
+        <li>Aprender HTML</li>
+        <li>Aprender CSS</li>
+        <li>Aprender Javascript</li>
+        <li>Aprender Typescript</li>
+    </ol>
+
+    <script>
+        const lista = document.getElementById("lista")
+
+        let novaTarefa = "<li>Revisar tudo</li>"
+
+        lista.innerHTML += novaTarefa
+    </script>
+</body>
+
+</html>

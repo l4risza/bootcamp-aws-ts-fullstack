@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 16</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Crie uma classe Aluno que receba em sua função construtora nome e curso.
+        Adicione um método chamado informarNotas que receba 4 números e armazene em uma propriedade chamada notas.
+        Adicione um método para calcular e mostrar a média do aluno
+    </h1>
+
+    <script>
+        class Aluno{
+            constructor(nome, curso){
+                this.nome = nome
+                this.curso = curso
+                this.notas = []
+            }
+
+            informarNotas(n1, n2, n3, n4){
+                this.notas = [n1, n2, n3, n4]
+            }
+
+            #calcularMedia(){       //# método privado, não acessível fora da classe (Larissa.calcularMedia())
+                const somaNotas = this.notas[0] + this.notas[1] + this.notas[2] + this.notas[3]
+                return somaNotas/4
+            }
+
+            mostrarMedia(){
+                if(this.notas.length == 0){
+                    console.log(`${this.nome} do curso ${this.curso} não possui notas`)
+                    return
+                }
+
+                const media = this.#calcularMedia()
+                console.log(`${this.nome} do curso ${this.curso} tem média: ${media}`)
+            }
+        }
+
+        const Larissa = new Aluno("Larissa", "ADS")
+        Larissa.informarNotas(6, 7, 8, 9)
+        Larissa.mostrarMedia()
+
+        const Luna = new Aluno("Luna", "HTML")
+    </script>
+</body>
+
+</html>

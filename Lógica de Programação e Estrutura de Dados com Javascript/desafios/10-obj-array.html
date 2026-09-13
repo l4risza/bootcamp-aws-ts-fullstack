@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 10</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>OBJETOS COM ARRAYS: Dado objeto Aluno mostre nome, lista com notas(array), média, aprovado/reprovado</h1>
+
+    <br>
+    <h2>Dados Aluno</h2>
+    <div id="output">
+
+    </div>
+
+    <script>
+        const Aluno = {
+            nome: 'Luna',
+            notas: [10, 7, 8.5, 9]
+        }
+
+        const output = document.getElementById("output")
+
+        output.innerHTML = "<h3>Nome: " + Aluno.nome + "</h3>"
+        output.innerHTML += "<p>Notas: </p>"
+        output.innerHTML += "<ul>"
+
+        let soma = 0
+        for (let i = 0; i < Aluno.notas.length; i++) {
+            soma += Aluno.notas[i]
+
+            output.innerHTML += "<li>" + Aluno.notas[i] + "</li>"
+        }
+        let media = soma / Aluno.notas.length
+
+        output.innerHTML += "</ul>"
+
+        output.innerHTML += "<p> Média: " + media.toFixed(1) + "</p>"
+
+        let aprov = (media >= 7) ? "APROVADO!" : "REPROVADO!"
+
+        output.innerHTML += "<p> Aprovação: " + aprov + "</p>"
+    </script>
+</body>
+
+</html>

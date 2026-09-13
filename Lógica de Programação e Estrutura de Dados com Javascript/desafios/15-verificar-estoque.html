@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 15</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Criar uma classe Produto que receba na função construtora o nome e quantidade de estoque inicial.
+        Implementar métodos comprar() e adicionar(). Fazer todas verificações possíveis para evitar erros.
+        Criar método para verificar estoque. (Console)
+    </h1>
+
+    <script>
+
+        class Produto {
+            constructor(nome, qtdEstoque) {
+                console.log("Construtuor chamado")
+                this.nome = nome
+                this.qtdEstoque = (qtdEstoque < 0) ? 0 : qtdEstoque //se digitar valor menor que zero ele vira zero automaticamente
+            }
+
+            comprar(qtd) {
+                if (qtd <= 0) {
+                    throw Error("Compra cancelada. Não é possível comprar 0 ou menos de um produto.")
+                    return null
+                }
+                if (qtd > this.qtdEstoque) {
+                    throw Error("Compra cancelada. Não é possível comprar mais que o estoque de um produto.")
+                    return null
+                }
+                this.qtdEstoque -= qtd
+                console.log(`Você comprou ${qtd} unidades do produto: ${this.nome}`)
+            }
+
+            adicionar(qtd) {
+                if (qtd <= 0) {
+                    throw Error("Operação cancelada. Não é possível adicionar 0 ou menos no estoque do produto.")
+                }
+
+                this.qtdEstoque += qtd
+                console.log(`Você adicionou ${qtd} unidades no estoque do produto: ${this.nome}`)
+            }
+
+            verificarEstoque(){
+                console.log(`Há ${this.qtdEstoque} unidades de ${this.nome} no estoque.`)
+            }
+        }
+
+        const mouse = new Produto("mouse", 25)
+        const teclado = new Produto("teclado", 10)
+        const monitor = new Produto("monitor", 10)
+
+    </script>
+</body>
+
+</html>

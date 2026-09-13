@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 14</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Crie uma função chamada calcular() que receba dois números e uma String com os valores: +, -, * ou /
+        e retorne o resultado da operação de acordo com o símbolo
+    </h1>
+
+    <script>
+        
+        function calcular(n1, n2, op){
+            switch(op){
+                case '+':
+                    return n1+n2
+                    break
+                case '-':
+                    return n1-n2
+                    break
+                case '*':
+                    return n1*n2
+                    break
+                case '/':
+                    return n1/n2
+                    break
+                default:
+                    return null
+            }
+        }
+
+        let num1 = parseInt(prompt("Primeiro número:"))
+        let num2 = parseInt(prompt("Segundo número:"))
+        let simbolo = prompt("Operação (+, -, * ou /):" )
+
+        
+        alert(calcular(num1, num2, simbolo))
+    </script>
+</body>
+
+</html>

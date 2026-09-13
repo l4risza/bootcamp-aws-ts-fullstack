@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dado os objetos Pessoa e Endereço, mostre onde Pessoa mora</h1>
+
+    <script>
+        const Endereco = {
+            rua: 'Margarida',
+            bairro: 'Bosque',
+            numero: '52'
+        }
+
+        const Pessoa = {
+            nome: 'Luna',
+            sobrenome: "Silva",
+            idade: '21',
+            Endereco
+        }
+
+        document.write(`${Pessoa.nome} mora na rua ${Pessoa.Endereco.rua} número ${Pessoa.Endereco.numero}`)
+    </script>
+
+    <h1>Mostre (no console) todas as propriedades e seus respectivos valores do objeto Pessoa</h1>
+
+    <script>
+        for(let prop in Pessoa){
+            console.log("----------")
+            console.log(prop)
+            console.log(Pessoa[prop])
+        }
+    </script>
+</body>
+
+</html>
