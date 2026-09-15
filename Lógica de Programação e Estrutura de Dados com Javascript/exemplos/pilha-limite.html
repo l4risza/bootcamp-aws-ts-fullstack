@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilha (Com Limite)</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pilha (Com Limite)</h1>
+
+    <script>
+        class Pilha {                       //stack
+            constructor(limite) {
+                if (limite && limite <= 0) {    //se há limite e ele é <= 0
+                    throw new Error("Limite não pode ser menor ou igual a zero!")
+                }
+                this.pilha = []
+                this.limite = limite || null    //se limite estiver vazio vira null
+            }
+
+            adicionar(novoElemento) {       //push()
+                if (this.estaCheia()) {
+                    throw new Error("Limite máximo da pilha atingido!")    //stack overflow
+                }
+                this.pilha.push(novoElemento)
+            }
+
+            remover() {                     //pop()
+                if (this.estaVazia()) {
+                    throw new Error("A pilha está vazia. Não há o que remover")
+                }
+                return this.pilha.pop()
+            }
+
+            estaCheia() {
+                return this.limite !== null && this.tamanho === this.limite
+            }
+
+            estaVazia() {
+                return this.pilha.length === 0      //retorna true ou false
+            }
+
+            espiar() {                      //peek()
+                if (this.estaVazia()) {
+                    return null
+                }
+                return this.pilha[this.pilha.length - 1]
+            }
+
+            limpar() {                      //clear()
+                this.pilha.length = 0
+            }
+
+            get tamanho() {                 //size()        //get pois age como uma propriedade
+                return this.pilha.length
+            }
+        }
+
+        const p = new Pilha(5)
+
+        console.log("Pilha vazia? ", p.estaVazia()) //true
+        console.log('Tamanho da pilha: ', p.tamanho)    //0
+        console.log('Topo da pilha: ', p.espiar())  //null
+
+        p.adicionar(4)
+        console.log("Adiciona")
+        p.adicionar(5)
+        console.log("Adiciona")
+        p.adicionar(6)
+        console.log("Adiciona")
+
+        console.log("Pilha vazia? ", p.estaVazia()) //false
+        console.log('Tamanho da pilha: ', p.tamanho)    //3
+        console.log('Topo da pilha: ', p.espiar())  //6
+
+        p.remover()
+        console.log("Remove")
+
+        console.log('Tamanho da pilha: ', p.tamanho)    //2
+        console.log('Topo da pilha: ', p.espiar())  //5
+
+        console.log("Pilha cheia? ", p.estaCheia()) //false
+
+        p.adicionar(6)
+        console.log("Adiciona")
+        p.adicionar(7)
+        console.log("Adiciona")
+        p.adicionar(8)
+        console.log("Adiciona")
+
+        console.log("Pilha cheia? ", p.estaCheia()) //true
+
+        //testando try...catch
+        try {
+            p.adicionar(9)
+            console.log("Adiciona")
+        } catch (e) {
+            console.log(e)
+            console.log("Erro: ", e.message)
+        }
+
+        p.limpar()
+        console.log("Limpa")
+
+        console.log("Pilha vazia? ", p.estaVazia()) //true
+        console.log('Tamanho da pilha: ', p.tamanho)    //0
+        console.log('Topo da pilha: ', p.espiar())  //null
+    </script>
+</body>
+
+</html>

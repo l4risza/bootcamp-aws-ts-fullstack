@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fila (Com Limite)</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fila (Com Limite)</h1>
+
+    <script>
+        class Fila {                        //queue
+            constructor(limite) {
+                this.fila = [] 
+                this.limite = (limite && limite > 0) ? limite : null    //se limite existir e > 0 então pega se não vira null
+            }
+
+            enfileirar(novoElemento) {      //enqueue()
+                if (this.estaCheia()) {
+                    throw new Error("Limite máximo da fila atingido!")
+                }
+                this.fila.push(novoElemento)
+            }
+
+            desenfileirar() {               //dequeue()
+                if (this.estaVazia()) {
+                    throw new Error("A fila está vazia. Não há o que remover")
+                }
+                return this.fila.shift()
+            }
+
+            estaVazia() { 
+                return this.fila.length === 0   //retorna true ou false
+            }
+
+            estaCheia() {
+                if (this.limite !== null) {    
+                    return this.fila.length >= this.limite  //retorna true ou false
+                }
+                return false
+            }
+
+            espiar() { 
+                return this.fila[0] || null     //se fila estiver vazia retorna null
+            }
+
+            limpar() {
+                this.fila.length = 0
+            }
+
+            get tamanho() { // size()
+                return this.fila.length
+            }
+        }
+
+        const f = new Fila(5)
+
+        console.log("Fila vazia? ", f.estaVazia()) //true
+        console.log('Tamanho da fila: ', f.tamanho)    //0
+        console.log('Primeiro da fila: ', f.espiar())  //null
+
+        f.enfileirar(4)
+        console.log("Adiciona")
+        f.enfileirar(5)
+        console.log("Adiciona")
+        f.enfileirar(6)
+        console.log("Adiciona")
+
+        console.log("Fila vazia? ", f.estaVazia()) //false
+        console.log('Tamanho da fila: ', f.tamanho)    //3
+        console.log('Primeiro da fila: ', f.espiar())  //4
+
+        f.desenfileirar()
+        console.log("Remove")
+
+        console.log('Tamanho da fila: ', f.tamanho)    //2
+        console.log('Primeiro da fila: ', f.espiar())  //5
+
+        console.log("Fila cheia? ", f.estaCheia()) //false
+
+        f.enfileirar(6)
+        console.log("Adiciona")
+        f.enfileirar(7)
+        console.log("Adiciona")
+        f.enfileirar(8)
+        console.log("Adiciona")
+
+        console.log("Fila cheia? ", f.estaCheia()) //true
+
+        //testando try...catch
+        try {
+            f.enfileirar(9)
+            console.log("Adiciona")
+        } catch (e) {
+            console.log(e)
+            console.log("Erro: ", e.message)
+        }
+
+        f.limpar()
+        console.log("Limpa")
+
+        console.log("Fila vazia? ", f.estaVazia()) //true
+        console.log('Tamanho da fila: ', f.tamanho)    //0
+        console.log('Primeiro da fila: ', f.espiar())  //null
+    </script>
+</body>
+
+</html>

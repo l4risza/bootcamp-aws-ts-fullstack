@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 19</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Desenvolver estrutura de dados que armazene no máximo 5 itens que representam o histórico de navegação.
+        Quando o limite for atingido e um novo item for adicionado, o item mais antigo é removido.
+        É possível navegar pelo histórico com "voltar" e "avançar".
+        Ao retroceder no histórico e adicionar um novo item, parte do histórico será perdido.
+    </h1>
+
+    <hr>
+    <h2>NAVEGADOR</h2>
+    <button onclick="voltarInterface()">Voltar</button>
+
+    <input type="text" id="input">
+
+    <button onclick="adicionarInterface()">Adicionar</button>
+    <button onclick="avancarInterface()">Avançar</button>
+    <button onclick="limparInterface()">Limpar Histórico</button>
+
+    <div id="output"></div>
+
+    <script>
+        class Historico {
+            #pont
+
+            constructor() {
+                this.historico = []
+                this.limite = 5
+                this.#pont = -1
+            }
+
+            adicionar(item) {
+                this.historico.length = this.#pont + 1
+
+                if (this.estaCheio()) {
+                    this.historico.shift()
+                    this.#pont--
+                }
+
+                this.historico.push(item)
+                this.#pont++
+            }
+
+            voltar() {
+                if (this.#pont > 0) {
+                    this.#pont--
+                    return true
+                }
+                return false
+            }
+
+            avancar() {
+                if (this.#pont < this.tamanho - 1) {
+                    this.#pont++
+                    return true
+                }
+                return false
+            }
+
+            estaCheio() {
+                return this.tamanho >= this.limite
+            }
+
+            get tamanho() {
+                return this.historico.length
+            }
+
+            imprimir() {
+                return "Historico: " + this.historico.toString() + " | Item Atual: " +
+                    this.historico[this.#pont] + " | Ponteiro: " + this.#pont
+            }
+
+            limpar() {
+                this.historico.length = 0
+                this.#pont = -1
+            }
+        }
+
+        const h = new Historico
+
+
+        console.log(h.imprimir())
+
+        h.adicionar(1)
+        console.log("add")
+
+        console.log(h.imprimir())
+
+        console.log("Avanca", h.avancar())
+
+        console.log(h.imprimir())
+
+        h.adicionar(2)
+        console.log("add")
+
+        console.log(h.imprimir())
+
+        h.adicionar(3)
+        console.log("add")
+
+        console.log(h.imprimir())
+
+        console.log("Volta", h.voltar())
+
+        console.log(h.imprimir())
+
+        console.log("Volta", h.voltar())
+
+        console.log(h.imprimir())
+
+        console.log("Volta", h.voltar())
+
+        console.log(h.imprimir())
+
+        console.log("Avanca", h.avancar())
+
+        console.log(h.imprimir())
+
+        h.adicionar(4)
+        console.log("add")
+
+        console.log(h.imprimir())
+
+        h.adicionar(5)
+        console.log("add")
+
+        console.log(h.imprimir())
+
+        h.adicionar(6)
+        console.log("add")
+
+        console.log(h.imprimir())
+
+        h.adicionar(7)
+        console.log("add")
+
+        console.log(h.imprimir())
+
+        h.limpar()
+        console.log("limpar")
+
+        console.log(h.imprimir())
+
+        //------------------------------------------------------------
+
+        function voltarInterface() {
+            const volta = h.voltar()   //recebe true ou false se dá pra voltar
+            if (volta) {                       //se der
+                imprimirInterface()
+            }
+        }
+
+        function avancarInterface() {           
+            const avanca = h.avancar()  //recebe true ou false se dá pra avançar
+            avanca && imprimirInterface()                
+        }
+
+        function adicionarInterface() {
+            const input = document.getElementById("input")
+            if (input.value) {                  //se tiver algo digitado no input
+                h.adicionar(input.value)
+                imprimirInterface()
+                input.value = ""                //limpa input
+                input.focus()                   //coloca o foco no input (não precisa clicar de novo)
+            }
+        }
+
+        function imprimirInterface() {
+            document.getElementById("output").textContent = h.imprimir()
+        }
+
+        function limparInterface() {
+            h.limpar()
+            document.getElementById("output").textContent = ""
+        }
+
+    </script>
+</body>
+
+</html>

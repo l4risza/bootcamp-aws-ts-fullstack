@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar e Remover Valor de Arrays</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Adicionar e Remover Valor de Arrays</h1>
+
+    <script>
+        arr1 = [1, 2, 3]
+        arr2 = [4, 5, 6, 7, 8]
+
+        //ADICIONAR VALORES
+
+        //no final da array
+        console.log(arr1)
+        arr1.push(4)
+        console.log("Adiciona no final")
+        
+        //no início da array
+        console.log(arr1)
+        arr1.unshift(0)
+        console.log("Adiciona no início")
+        console.log(arr1)
+
+        //REMOVER VALORES
+
+        //no final da array
+        console.log(arr2)
+        arr2.pop()
+        console.log("Remove no final")
+        
+        //no início da array
+        console.log(arr2)
+        arr2.shift()
+        console.log("Remove no início")
+        console.log(arr2)
+
+           
+
+    </script>
+</body>
+
+</html>
