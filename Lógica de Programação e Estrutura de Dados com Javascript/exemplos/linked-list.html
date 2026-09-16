@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List (Lista Ligada)</title>
+
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Linked List (Lista Ligada)</h1>
+
+    <script>
+         class Node {
+            constructor(value) {
+                this.value = value
+                this.next = null
+            }
+        }
+
+        class LinkedList {
+            #size
+            constructor() {
+                this.head = null
+                this.tail = null
+                this.#size = 0
+            }
+
+            append(value) {                     //adiciona no final da lista
+                const newNode = new Node(value)
+
+                if (this.head === null) {       //se lista vazia, adicionando primeiro elemento
+                    this.head = newNode
+                    this.tail = newNode
+                } else {                        //já tem elementos na lista
+                    const last = this.tail      //pega último elemento
+                    last.next = newNode         //next do último aponta pro novo elemento
+                    this.tail = newNode         //novo elemento se torna o tail
+                }
+
+                this.#size++
+            }
+
+            prepend(value) {                    //adiciona no início da lista
+                const newNode = new Node(value)
+                newNode.next = this.head        //next do novo elemento aponta pro head (ou seja, deixa de ser o primeiro)
+                this.head = newNode             //novo elemento se torna o head
+
+                if (this.#size === 0) {         //se lista vazia, adicionando primeiro elemento
+                    this.tail = newNode
+                }
+
+                this.#size++
+            }
+
+            pop() {                             //remove o último elemento da lista
+                if (this.tail) {                //se tem tail (tendo pelo menos um elemento na lista)
+                    const last = this.tail      //pega o último elemento
+                    const value = last.value    //pega o valor do último elemento (para retornar informando qual foi removido)
+
+                    if (this.#size === 1) {     //se só tiver um elemento na lista
+                        this.head = null
+                        this.tail = null
+                        this.#size = 0
+                        return value            //remove o único
+                    }
+
+                    let current = this.head     //elemento atual começa pelo primeiro (head)
+                    let prev = null             //anterior (ao head) é nulo
+
+                    while (current !== last) {  //enquanto o elemento atual for diferente do último
+                        prev = current          //o anterior aponta para o atual
+                        current = current.next  //o atual aponta para o próximo
+                    }                           //repete até o atual apontar para o último
+
+                    prev.next = null            //o anterior deixa de apontrar para o atual (agora último)
+                    this.tail = prev            //o último (tail) aponta para o que era penúltimo (penúltimo se torna último)
+
+                    this.#size--                
+                    return value
+                }
+                return null
+            }
+
+            shift() {                           //remove o primeiro elemento da lista
+                if (this.head) {                //se tem head (tendo pelo menos um elemento na lista)
+                    const first = this.head     //pega o primeiro (head)
+                    const value = first.value   //pega o valor do primeiro (para retornar informando qual foi removido)
+                    const next = first.next     //pega o próximo depois do primeiro 
+
+                    if (this.#size === 1) {     //se só tiver um elemento na lista
+                        this.tail = null
+                        this.head = null
+                        this.#size = 0
+                        return value            //remove o único
+                    }
+
+                    first.next = null           //o que era o primeiro deixa de apontar para o segundo (próximo)
+                    this.head = next            //o primeiro (head) se aponta para o que era o próximo (segundo se torna primeiro)
+
+                    this.#size--
+                    return value
+                }
+                return null
+            }
+
+            remove(value) {                     //remover o valor escolhido
+                let current = this.head         //atual começa pelo primeiro (head)
+                let prev = null                 //anterior (ao head) é nulo
+
+                while (current) {               //enquanto há pelo menos um elemento na lista
+                    if (current.value === value) {      //se o valor do atual for o valor solicitado
+                        if (prev) {                     //se há elemento anterior ao escolhido
+                            prev.next = current.next    //próximo do anterior aponta o próximo do atual (atual deixa de ser apontado) 
+                            //se o nó removido for o tail, atualiza o tail
+                            if (current === this.tail) {//se o atual for o último (tail)
+                                this.tail = prev;       //o último (tail) aponta para o anterior (penúltimo se torna último)
+                            }
+                            current.next = null         //o atual deixa de apontar para um next (pois agora é último)
+                        } else {                        //se não há elemento anterior ao escolhido
+                            this.head = current.next    //próximo do atual se torna o primeiro 
+                            //se removemos o único elemento da lista, atualiza o tail
+                            if (current === this.tail) {//se o atual for o único (já que não há elemento anterior)
+                                this.tail = null;       //único é removido
+                            }
+                            current.next = null         //próximo ao atual se torna nulo
+                        }
+                        this.#size--
+                        return true
+                    }
+                    prev = current                      //o anterior aponta para o atual
+                    current = current.next              //o atual aponta para o próximo
+                }
+                return false
+            }
+
+            insertAt(position, value) {                 //insere novo valor no meio da lista
+                if (position >= 0 && position <= this.#size) {
+                    if (position === 0) {               //se posição solicitada for 0
+                        this.prepend(value)             //manda adicionar elemento no início da lista
+                        return true
+                    }
+
+                    if (position === this.#size) {      //se posição solicitada for a última
+                        this.append(value)              //manda adicionar elemento no final da lista
+                        return true
+                    }
+
+                    const newNode = new Node(value)
+
+                    let current = this.head             //atual começa pelo primeiro (head)
+                    let prev = null                     //anterior (ao head) é nulo
+
+                    for (let i = 0; i < position; i++) {//de zero até antes da posição solicitada
+                        prev = current                  //o anterior aponta para o atual
+                        current = current.next          //o atual aponta para o próximo
+                    }                                   //repete até o next do atual apontar para o elemento na posição solicitada
+
+                    newNode.next = current              //próximo do novo elemento aponta para o atual
+                    prev.next = newNode                 //próximo do anterior aponta para o novo elemento
+                                                        //ou seja o novo se insere entre o anterior e o atual
+                    this.#size++
+                    return true
+                }
+                return false
+            }
+
+            removeAt(position) {                        //remove valor do meio da lista na posição solicitada
+                if (position >= 0 && position < this.#size) {
+                    if (position === 0) {               //se posição solicitada for a primeira
+                        return this.shift()             //manda remover o primeiro item da lista
+                    }
+
+                    if (position === this.#size - 1) {  //se posição solicitada for a última
+                        return this.pop()               //manda remover o último item da lista
+                    }
+
+                    let current = this.head             //atual começa pelo primeiro (head)
+                    let prev = null                     //anterior (ao head) é nulo
+
+                    for (let i = 0; i < position; i++) {//de zero até antes da posição solicitada
+                        prev = current                  //o anterior aponta para o atual
+                        current = current.next          //o atual aponta para o próximo
+                    }                                   //repete até o next do atual apontar para o elemento na posição solicitada
+
+                    const value = current.value         //pega o valor do atual (para retornar informando qual foi removido)
+                    prev.next = current.next            //próximo do anterior aponta o próximo do atual (atual deixa de ser apontado) 
+                    current.next = null                 //o atual deixa de apontar para um next 
+
+                    this.#size--
+                    return value
+                }
+                return null
+            }
+
+            indexOf(value) {                            //retorna a posição do valor solicitado
+                let current = this.head;                
+
+                for (let i = 0; i < this.#size; i++) {
+                    if (current.value === value) {      //se valor do atual for igual ao valor solicitado
+                        return i;                       //retorna posição
+                    }
+                    current = current.next              //atual aponta para o próximo do atual
+                }
+                return -1
+            }
+
+            lastIndexOf(value) {                        //retorna a última posição que contém o valor solicitado
+                let lastIndex = -1
+                let current = this.head
+                let index = 0
+                while (current) {                       //enquanto há pelo menos um elemento na lista
+                    if (current.value === value) {      //se valor atual for igual ao valor solicitado
+                        lastIndex = index               //lastIndex recebe valor do index (que vai incrementando a cada elemento)
+                    }
+                    current = current.next              //atual aponta para o próximo (próximo se torna atual)
+                    index++                             //index conta +1
+                }
+                return lastIndex;
+            }
+
+            isEmpty() {
+                return this.head === null
+            }
+
+            get size() {
+                return this.#size
+            }
+
+            print() {
+                let current = this.head
+                let result = ""
+                while (current) {
+                    result += current.value + " --> "
+                    current = current.next
+                }
+
+                console.log(result + " --- Size: " + this.#size)
+            }
+        }
+
+        const list = new LinkedList()
+        
+        console.log(list.isEmpty())
+
+        console.log("removi: ", list.pop())
+        list.print()
+        
+        list.append(10)
+
+        console.log(list.isEmpty())
+        list.print()
+
+        list.append(20)
+        list.print()
+
+        list.prepend(5)
+        list.print()
+
+        list.prepend(2)
+        list.print()
+
+        list.insertAt(2, 100)
+        list.insertAt(5, 200)
+        list.print()
+
+        console.log("removi: ", list.removeAt(2))
+        list.print()
+
+        console.log("removi: ", list.removeAt(0))
+        list.print()
+
+        console.log("removi: ", list.removeAt(4))
+        list.print()
+
+        console.log("removi: ", list.removeAt(3))
+        list.print()
+
+        // list.remove(20)
+        // list.print()
+
+        // console.log("removi pop: ", list.pop())
+        // list.print()
+
+        // console.log("removi shift: ", list.shift())
+        // list.print()
+        // console.log("removi shift: ", list.shift())
+        // list.print()
+        // console.log("removi pop: ", list.pop())
+        // list.print()
+
+        // list.remove(100)
+        // list.print()
+
+        // list.remove(10)
+        // list.print()
+
+        const list2 = new LinkedList()
+
+        list2.prepend(5)
+        list2.prepend(4)
+        list2.prepend(3)
+
+        list2.print()
+
+        console.log(list2.indexOf(50))
+        console.log(list2)
+    </script>
+</body>
+
+</html>
