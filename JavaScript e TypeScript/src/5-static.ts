@@ -13,7 +13,7 @@ export class Pessoa {
     console.log(Pessoa.idadePadrao, Pessoa.cpfPadrao);            //os atrib estáticos não são acessados com this.
   }
 
-  static criaPessoa(nome: string, sobrenome: string): Pessoa {    //cria instância da própri classe sem passar todos atributos
+  static criaPessoa(nome: string, sobrenome: string): Pessoa {    //cria instância da própria classe sem passar todos atributos
     return new Pessoa(nome, sobrenome, Pessoa.idadePadrao, Pessoa.cpfPadrao);
   }
 }
