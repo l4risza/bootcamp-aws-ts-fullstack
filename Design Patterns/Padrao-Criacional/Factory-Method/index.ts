@@ -1,7 +1,7 @@
-import Transport from "./Transport/Transport"; //importa classe molde
-import CarTransport from "./Transport/CarTransport";
-import MotoTransport from "./Transport/MotoTransport";
-import BikeTransport from "./Transport/BikeTransport";
+import Transport from "./transport/Transport"; //importa classe molde
+import CarTransport from "./transport/CarTransport";
+import MotoTransport from "./transport/MotoTransport";
+import BikeTransport from "./transport/BikeTransport";
 
 declare var process: any;
 

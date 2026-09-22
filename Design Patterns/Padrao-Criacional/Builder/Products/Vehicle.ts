@@ -1,7 +1,7 @@
-import Engine from "../Components/Engine";
-import Transmission from "../Components/Transmission";
-import VehicleType from "../Components/VehicleType";
-import Wheel from "../Components/Wheel";
+import Engine from "../components/Engine";
+import Transmission from "../components/Transmission";
+import VehicleType from "../components/VehicleType";
+import Wheel from "../components/Wheel";
 
 export default class Vehicle {
   private _vehicleType!: VehicleType;

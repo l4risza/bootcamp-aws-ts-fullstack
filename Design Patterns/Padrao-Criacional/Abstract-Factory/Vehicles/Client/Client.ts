@@ -1,6 +1,6 @@
-import IAircraft from "../Aerial/Interfaces/IAircraft";
-import ITransportFactory from "../Factories/Interfaces/ITransportFactory";
-import ILandVehicle from "../Land/Interfaces/ILandVehicle";
+import IAircraft from "../aerial/interfaces/IAircraft";
+import ITransportFactory from "../factories/interfaces/ITransportFactory";
+import ILandVehicle from "../land/Interfaces/ILandVehicle";
 
 export default class Client{
   private vehicle: ILandVehicle;

@@ -1,8 +1,8 @@
-import Drone from "../Aerial/Drone";
-import IAircraft from "../Aerial/Interfaces/IAircraft";
-import ILandVehicle from "../Land/Interfaces/ILandVehicle";
+import Drone from "../aerial/Drone";
+import IAircraft from "../aerial/interfaces/IAircraft";
+import ILandVehicle from "../land/interfaces/ILandVehicle";
 import Scooter from "../Land/Scooter";
-import ITransportFactory from "./Interfaces/ITransportFactory";
+import ITransportFactory from "./interfaces/ITransportFactory";
 
 export default class LimeTransport implements ITransportFactory{
   createTransportVehicle(): ILandVehicle {

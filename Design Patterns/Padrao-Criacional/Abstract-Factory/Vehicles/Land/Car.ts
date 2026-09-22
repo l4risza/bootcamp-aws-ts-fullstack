@@ -1,4 +1,4 @@
-import ILandVehicle from "./Interfaces/ILandVehicle";
+import ILandVehicle from "./interfaces/ILandVehicle";
 
 export default class Car implements ILandVehicle{
     startRoute(): void {

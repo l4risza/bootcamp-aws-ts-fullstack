@@ -1,9 +1,9 @@
-import Client from "./Vehicles/Client/Client";
-import Company from "./Vehicles/Consts/Company";
-import ITransportFactory from "./Vehicles/Factories/Interfaces/ITransportFactory";
-import UberTransport from "./Vehicles/Factories/UberTransport";
-import NineNineTransport from "./Vehicles/Factories/NineNineTransport";
-import LimeTransport from "./Vehicles/Factories/LimeTranspot";
+import Client from "./vehicles/client/Client";
+import Company from "./vehicles/consts/Company";
+import ITransportFactory from "./vehicles/factories/interfaces/ITransportFactory";
+import UberTransport from "./vehicles/factories/UberTransport";
+import NineNineTransport from "./vehicles/factories/NineNineTransport";
+import LimeTransport from "./vehicles/factories/LimeTranspot";
 
 const currentCompany = Company.LIME;
 let factory: ITransportFactory | undefined; //variável factory do tipo ITransportFactory

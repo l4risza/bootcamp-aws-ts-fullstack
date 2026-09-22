@@ -1,4 +1,4 @@
-import IAircraft from "./Interfaces/IAircraft";
+import IAircraft from "./interfaces/IAircraft";
 
 export default class Airplane implements IAircraft{
     startRoute(): void {

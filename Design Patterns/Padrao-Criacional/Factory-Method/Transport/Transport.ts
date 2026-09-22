@@ -1,4 +1,4 @@
-import IVehicle from "./Vehicles/Interfaces/IVehicle";
+import IVehicle from "./vehicles/interfaces/IVehicle";
 
 export default abstract class Transport{  //classe abstrata pois servirá de molde
   startTransport(): void{

@@ -1,4 +1,4 @@
-import IAircraft from "./Interfaces/IAircraft";
+import IAircraft from "./interfaces/IAircraft";
 
 export default class Helicopter implements IAircraft{
     startRoute(): void {

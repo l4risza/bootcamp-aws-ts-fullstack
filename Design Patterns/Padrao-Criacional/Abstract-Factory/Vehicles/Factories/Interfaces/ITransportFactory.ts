@@ -1,5 +1,5 @@
-import IAircraft from "../../Aerial/Interfaces/IAircraft";
-import ILandVehicle from "../../Land/Interfaces/ILandVehicle";
+import IAircraft from "../../aerial/interfaces/IAircraft";
+import ILandVehicle from "../../land/interfaces/ILandVehicle";
 
 export default interface ITransportFactory{
   createTransportVehicle(): ILandVehicle;
