@@ -1,0 +1,57 @@
+import Engine from "../Components/Engine";
+import Transmission from "../Components/Transmission";
+import VehicleType from "../Components/VehicleType";
+import Wheel from "../Components/Wheel";
+
+export default class Vehicle {
+  private _vehicleType!: VehicleType;
+  //! - definite assignment assertion, avisa que variável receberá valor futuramente
+  private _seats!: number;
+  private _engine!: Engine;
+  private _transmission!: Transmission;
+  private _wheels: Wheel[] = [];
+
+  addWheel(wheel: Wheel) {
+    this._wheels.push(wheel);
+  }
+
+  get wheels(): Wheel[] {
+    return this._wheels;
+  }
+
+  get wheelsTotal(): number {
+    return this._wheels.length;
+  }
+
+  get vehicleType(): VehicleType {
+    return this._vehicleType;
+  }
+
+  set vehicleType(vt: VehicleType) {
+    this._vehicleType = vt;
+  }
+
+  get seats(): number {
+    return this._seats;
+  }
+
+  set seats(seats: number) {
+    this._seats = seats;
+  }
+
+  get engine(): Engine {
+    return this._engine;
+  }
+
+  set engine(engine: Engine) {
+    this._engine = engine;
+  }
+
+  get transmission(): Transmission {
+    return this._transmission;
+  }
+
+  set transmission(tr: Transmission) {
+    this._transmission = tr;
+  }
+}
